@@ -1,3 +1,2 @@
-db_desenvolvimento.php
-db_producao.php
+config/*
 vendor/*
