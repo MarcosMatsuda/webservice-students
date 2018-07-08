@@ -3,7 +3,7 @@
 require './vendor/autoload.php';
 require './config.php';
 
-$config['displayErrorDetails'] = true;
+$config['displayErrorDetails'] = false;
 $config['addContentLengthHeader'] = false;
 
 $config['db']['host']   = $servername;
