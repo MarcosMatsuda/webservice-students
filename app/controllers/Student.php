@@ -14,7 +14,12 @@ class Student{
         $this->container = $container;
     }
 
-    public function index( Request $request, Response $response )
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @return mixed
+     */
+    public function index(Request $request, Response $response )
     {
         try
         {
@@ -36,6 +41,19 @@ class Student{
 
     }
 
+    /**
+     *
+     * Headers:
+     * Content-Type: application/json
+     *
+     * Body:
+     * x-www-form-urlencoded
+     *
+     * @param Request $request
+     * @param Response $response
+     * @param $args
+     * @return mixed
+     */
     public function create( Request $request, Response $response )
     {
         try{
@@ -72,7 +90,13 @@ class Student{
         return $return;
     }
 
-    public function show( Request $request, Response $response, $args )
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param $args
+     * @return mixed
+     */
+    public function show(Request $request, Response $response, $args )
     {
         $sql = "SELECT * FROM students WHERE id = :id";
         $sth = $this->container->db->prepare($sql);
@@ -92,6 +116,9 @@ class Student{
      *
      * Headers:
      * Content-Type: application/json
+     *
+     * Body:
+     * x-www-form-urlencoded
      *
      * @param Request $request
      * @param Response $response
@@ -125,7 +152,14 @@ class Student{
         return $return;
     }
 
-    public function destroy( Request $request, Response $response, $args )
+
+    /**
+     * @param Request $request
+     * @param Response $response
+     * @param $args
+     * @return mixed
+     */
+    public function destroy(Request $request, Response $response, $args )
     {
         try{
 
