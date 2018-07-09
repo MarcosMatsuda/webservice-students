@@ -3,7 +3,7 @@
 require './vendor/autoload.php';
 require './config.php';
 
-$config['displayErrorDetails'] = false;
+$config['displayErrorDetails'] = true;
 $config['addContentLengthHeader'] = false;
 
 $config['db']['host']   = $servername;
@@ -26,12 +26,6 @@ $container['db'] = function ($c) {
     return $pdo;
 };
 
-$container['Student'] = function ($container) {
-    $students = new \App\Controllers\Student($container);
-    return $students;
-};
-
 require './app/routes.php';
 
 $app->run();
-

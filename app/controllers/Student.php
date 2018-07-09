@@ -4,7 +4,6 @@ namespace App\Controllers;
 
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
-use App\Controllers\Controller;
 
 class Student{
 
@@ -69,7 +68,7 @@ class Student{
             $return = $response->withJson("Operação não realizada.", 400)
                 ->withHeader('Content-type', 'application/json');
         }
-        
+
         return $return;
     }
 
