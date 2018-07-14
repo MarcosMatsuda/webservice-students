@@ -3,14 +3,6 @@
 ////namespace  App\Config;
 //
 ////use PDO;
-///*
-// * Constantes de parâmetros para configuração da conexão
-// */
-////define('HOST', 'localhost');
-////define('DBNAME', 'u880525892_fiap');
-////define('CHARSET', 'utf8');
-////define('USER', 'root');
-////define('PASSWORD', 'vagrant');
 //
 //class Conexao {
 //
