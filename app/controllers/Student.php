@@ -60,22 +60,22 @@ class Student{
 
             $params = $request->getParsedBody();
 
-            if( is_null($params['name']) || is_null($params['gender']) || is_null($params['age'])  ){
+            if( is_null($params['name']) || is_null($params['gender']) ){
                 return $response->withJson("Operação não realizada.", 400)
                     ->withHeader('Content-type', 'application/json');
             }
 
-            if( !is_numeric($params['age']) ){
-                return $response->withJson("Operação não realizada.", 400)
-                    ->withHeader('Content-type', 'application/json');
-            }
+//            if( !is_numeric($params['birthday']) ){
+//                return $response->withJson("Operação não realizada.", 400)
+//                    ->withHeader('Content-type', 'application/json');
+//            }
 
-            $sql = "INSERT INTO students (fullname, gender, age ) VALUES ( :fullname, :gender, :age);";
+            $sql = "INSERT INTO students (fullname, gender, birthday ) VALUES ( :fullname, :gender, :birthday);";
 
             $statement = $this->container->db->prepare($sql);
             $statement->bindParam(":fullname", $params['name'], \PDO::PARAM_STR);
             $statement->bindParam(":gender", $params['gender'], \PDO::PARAM_STR);
-            $statement->bindParam(":age", $params['age'], \PDO::PARAM_INT);
+            $statement->bindParam(":birthday", $params['birthday'], \PDO::PARAM_STR);
             $statement->execute();
 
             $return = $response->withJson("Operação realizada com sucesso.", 200)
@@ -131,11 +131,11 @@ class Student{
 
             $params = $request->getParsedBody();
 
-            $sql = "UPDATE students SET fullname = :fullname, age = :age, gender = :gender WHERE id = :id";
+            $sql = "UPDATE students SET fullname = :fullname, birthday = :birthday, gender = :gender WHERE id = :id";
             $statement = $this->container->db->prepare($sql);
 
             $statement->bindParam(":fullname", $params['name'], \PDO::PARAM_STR);
-            $statement->bindParam(":age",$params['age'], \PDO::PARAM_STR);
+            $statement->bindParam(":birthday",$params['birthday'], \PDO::PARAM_STR);
             $statement->bindParam(":gender", $params['gender'], \PDO::PARAM_STR);
             $statement->bindParam(":id", $args['id'], \PDO::PARAM_INT);
             $statement->execute();
